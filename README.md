@@ -37,7 +37,7 @@ Create a policy that ensures all indexed resources are tagged. This will help yo
 cd policy
 az policy definition create --name tagging-policy --display-name 'tags requirement policy' --description 'This policy enables you to deny the creation of resources that do not have tags' --rules policy.rules.json --mode indexed
 ```
-**Create the Policy Assignment**
+**Create the Policy Assignment**<br>
 az policy assignment create --policy tagging-policy --name tagging-policy-assignment --scope /subscriptions/$ARM_SUBSCRIPTION_ID
 
 ![](images/policy-assignment-list.png)
@@ -57,6 +57,12 @@ Our Terraform template will allow you to reliably create, update, and destroy ou
 
 #### Deploying Your Infrastructure
 * Run the terraform init command: terraform init sets up the essential building blocks for your Terraform project. It prepares the environment, downloads necessary tools, and lays the groundwork for managing your infrastructure using Terraform configurations.
+
+* Run the terraform import command: Import the resource group if you're already have a resource.
+```
+terraform import azurerm_resource_group.existing_rg /subscriptions/$ARM_SUBSCRIPTION_ID/resourceGroups/$RS_GROUP_NAME
+```
+* Run the terraform init command: It sets up the essential building blocks for your Terraform project. It prepares the environment, downloads necessary tools, and lays the groundwork for managing your infrastructure using Terraform configurations.
   ```
   terraform init
   ```
